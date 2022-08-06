@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG DEMO</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <style>
+      #start:hover {
+        fill: #0d6efd;
+      }
+    </style>
+  </head>
+  <body>
+    <button
+      type="submit"
+      style="border-radius: 50%; background-color: #0d6efd; border: none"
+    >
+      <i class="bi bi-arrow-counterclockwise text-white"></i>
+    </button>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">选择重跑</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- 画 start -> build -> onboard-test -> end -->
+            <svg width="100%" height="100%">
+              <!-- start -->
+              <text x="57" y="50" fill="gray">Start</text>
+              <circle id="start" cx="75" cy="75" r="5" fill="gray" />
+              <path d="M 80,75 h 75" stroke="gray" fill="gray"></path>
+              <!-- build -->
+              <a
+                href="https://cn.bing.com"
+                target="_blank"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                data-bs-title="rebuild from here"
+              >
+                <circle
+                  class="hvr-box-shadow-outset"
+                  id="start"
+                  cx="170"
+                  cy="75"
+                  r="15"
+                  fill="#0dcaf0"
+                />
+              </a>
+              <text x="150" y="50" fill="gray">Build</text>
+              <path d="M 185,75 h 100" stroke="gray" fill="gray"></path>
+              <!-- onboard test -->
+              <circle
+                class="hvr-float-shadow"
+                id="onboard-test"
+                cx="300"
+                cy="75"
+                r="15"
+                fill="#0dcaf0"
+              />
+              <text x="250" y="50" fill="gray">Onboard Test</text>
+              <path d="M 315,75 h 75" stroke="gray" fill="gray"></path>
+              <!-- end -->
+              <circle id="start" cx="395" cy="75" r="5" fill="gray" />
+              <text x="380" y="50" fill="gray">End</text>
+            </svg>
+          </div>
+          <div class="modal-footer justify-content-start">
+            <p style="font-size: 10px">
+              <strong>备注：</strong>
+            </p>
+            <ol style="font-size: 10px" class="ps-4">
+              <li>选择从 Build 阶段重跑将从头开始跑编译和板上测试</li>
+              <li>
+                选择从 Onboard Test
+                阶段重跑将跳过编译直接执行板上测试，当然如果固件有效性检测不过将自动回退到从编译阶段开始
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const tooltipTriggerList = document.querySelectorAll(
+      '[data-bs-toggle="tooltip"]'
+    );
+    const tooltipList = [...tooltipTriggerList].map(
+      (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+    );
+  </script>
+</html>
